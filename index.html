@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="title" content="Lightyear Converter">
+<meta name="description" content="Give back to Community with ❤️ by Tected Team">
+<meta name="keywords" content="lightyear,convert,converter,develop">
+<meta name="robots" content="index, follow">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="language" content="English">
+<meta name="author" content="Arlind Abdurahmani">
+
+    <title>Lightyear Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #333;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        input[type="number"], select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lightyear Converter</h1>
+    <div class="container">
+        <div class="input-group">
+            <label for="inputType">Convert from:</label>
+            <select id="inputType">
+                <option value="lightyears">Lightyears</option>
+                <option value="kilometers">Kilometers</option>
+                <option value="miles">Miles</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="inputValue">Value:</label>
+            <input type="number" id="inputValue" placeholder="Enter the value">
+        </div>
+        <button onclick="convert()">Convert</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function convert() {
+            var inputType = document.getElementById("inputType").value;
+            var inputValue = document.getElementById("inputValue").value;
+            var result = document.getElementById("result");
+            
+            if (inputType === "lightyears") {
+                var kilometers = inputValue * 9.461 * Math.pow(10, 12);
+                var miles = kilometers * 0.621371;
+                
+                result.innerHTML = "Kilometers: " + kilometers.toLocaleString() + "<br>";
+                result.innerHTML += "Miles: " + miles.toLocaleString();
+            } else if (inputType === "kilometers") {
+                var lightyears = inputValue / (9.461 * Math.pow(10, 12));
+                var miles = inputValue * 0.621371;
+                
+                result.innerHTML = "Lightyears: " + lightyears.toLocaleString() + "<br>";
+                result.innerHTML += "Miles: " + miles.toLocaleString();
+            } else if (inputType === "miles") {
+                var kilometers = inputValue / 0.621371;
+                var lightyears = kilometers / (9.461 * Math.pow(10, 12));
+                
+                result.innerHTML = "Kilometers: " + kilometers.toLocaleString() + "<br>";
+                result.innerHTML += "Lightyears: " + lightyears.toLocaleString();
+            }
+        }
+    </script>
+</body>
+</html>
